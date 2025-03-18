@@ -17,24 +17,33 @@ async function getWeather() {
     return;
   }
 
-  try {
-    const apiKey = "YOUR_API_KEY";  // Get your API key from https://openweathermap.org/api
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`);
-    if (!response.ok) {
-      throw new Error("City not found");
-    }
+  // You can replace these values with the latitude and longitude of your desired city
+  const latitude = 52.52; // Example for Berlin (replace with the actual coordinates)
+  const longitude = 13.41;
 
+  try {
+    // Make an API call to Open-Meteo
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`;
+    const response = await fetch(url);
     const data = await response.json();
 
-    // Display weather data
-    document.getElementById("cityName").textContent = `${data.name}, ${data.sys.country}`;
-    document.getElementById("temp").textContent = `Temperature: ${data.main.temp}°C`;
-    document.getElementById("description").textContent = `Weather: ${data.weather[0].description}`;
-    document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
-    document.getElementById("wind").textContent = `Wind: ${data.wind.speed} m/s`;
+    console.log(data); // Log the data to the console to check the structure
 
+    if (!response.ok) {
+      throw new Error("Failed to fetch weather data.");
+    }
+
+    // Fetch the hourly temperature data
+    if (data.hourly && data.hourly.temperature_2m) {
+      const temperature = data.hourly.temperature_2m[0]; // Getting the first hourly temperature
+      document.getElementById("cityName").textContent = `Weather for ${cityName}`;
+      document.getElementById("temp").textContent = `Temperature: ${temperature}°C`;
+    } else {
+      throw new Error("No weather data available.");
+    }
   } catch (error) {
     // Display error message if something goes wrong
+    console.error(error);
     errorMessage.textContent = error.message;
   }
 }
