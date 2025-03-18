@@ -2,23 +2,24 @@
 
 ## Project Overview
 
-[Provide a brief summary of the project, including the theme and objectives.]
+The mini hackathon aims to encourage collaboration and practical use of asynchronous JavaScript concepts from Module 05. In randomly assigned groups, we'll work together to create a small project based on a provided theme within the allocated class time.
 
 ## Team Members:
 
--   Name 1
--   Name 2
+-   Arshdeep Singh Rishi
+-   Sahil Choudhary
+-   Hrithik pala
 
 ## Member Contributions:
 
-### Name 1:
+### Arshdeep Singh Rishi:
 
--   Worked on [specific elements] of the webpage.
+-   Worked on HTML file.
 
-### Name 2:
+### Sahil Choudhary:
 
--   Was responsible for [specific tasks], focusing on [specific HTML elements].
+-   Was responsible for working on Javascript File.
 
-### Name 3:
+### Hrithik Pala:
 
--   Handled [specific sections], covering [specific topics or features].
+-   Worked on CSS file.
